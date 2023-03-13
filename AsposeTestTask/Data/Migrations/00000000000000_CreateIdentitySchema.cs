@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AsposeTestTask.Data.Migrations
+namespace Avangardum.AsposeTestTask.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

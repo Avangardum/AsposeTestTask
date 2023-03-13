@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AsposeTestTask.Data;
+namespace Avangardum.AsposeTestTask.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {

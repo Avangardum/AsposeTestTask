@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AsposeTestTask.Pages;
+namespace Avangardum.AsposeTestTask.Pages;
 
 public class PrivacyModel : PageModel
 {

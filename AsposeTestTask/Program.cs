@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using AsposeTestTask.Data;
+using Avangardum.AsposeTestTask.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
