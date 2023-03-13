@@ -1,0 +1,13 @@
+﻿@page
+@model Avangardum.AsposeTestTask.Pages.Feed
+@{
+    ViewData["Title"] = "Feed";
+}
+
+@foreach (var post in Model.Posts)
+{
+    <div class="post">
+        <b>@post.AuthorName</b><br/>
+        @post.Text
+    </div>
+}

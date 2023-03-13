@@ -20,3 +20,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.post {
+  background-color: #d2e6ff;
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 10px;
+}

@@ -9,4 +9,6 @@ public class ApplicationDbContext : IdentityDbContext
         : base(options)
     {
     }
+
+    public DbSet<Post> Posts { get; set; }
 }

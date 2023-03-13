@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Avangardum.AsposeTestTask.Pages;
 
-public class IndexModel : PageModel
+public class Index : PageModel
 {
-    public void OnGet()
+    public IActionResult OnGet()
     {
+        return RedirectToPage(nameof(Feed));
     }
 }

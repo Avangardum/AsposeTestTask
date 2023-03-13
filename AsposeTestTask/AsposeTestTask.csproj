@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>aspnet-AsposeTestTask-7FFB28A9-324C-4E1A-8AE6-FA435C9C88BB</UserSecretsId>
         <RootNamespace>Avangardum.AsposeTestTask</RootNamespace>

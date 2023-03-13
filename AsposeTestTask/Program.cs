@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Avangardum.AsposeTestTask.Data;
+using Avangardum.AsposeTestTask.Models;
+using Avangardum.AsposeTestTask.Pages;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<PostService>();
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
