@@ -9,12 +9,10 @@ public class Feed : PageModel
     public record PostViewModel(string Text, string AuthorName);
 
     private readonly PostService _postService;
-    private readonly UserService _userService;
 
-    public Feed(PostService postService, UserService userService)
+    public Feed(PostService postService)
     {
         _postService = postService;
-        _userService = userService;
     }
 
     public List<PostViewModel> Posts { get; set; } = new();
@@ -28,5 +26,5 @@ public class Feed : PageModel
             .ToList();
     }
 
-    private PostViewModel ConvertPostToViewModel(Post post) => new(post.Text, _userService.GetUserName(post.AuthorId));
+    private PostViewModel ConvertPostToViewModel(Post post) => new(post.Text, post.AuthorName);
 }

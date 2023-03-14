@@ -10,12 +10,10 @@ namespace Avangardum.AsposeTestTask.Pages;
 public class CreatePost : PageModel
 {
     private PostService _postService;
-    private UserService _userService;
 
-    public CreatePost(PostService postService, UserService userService)
+    public CreatePost(PostService postService)
     {
         _postService = postService;
-        _userService = userService;
     }
 
     [BindProperty, Required]
@@ -29,7 +27,7 @@ public class CreatePost : PageModel
     public IActionResult OnPost()
     {
         if (!ModelState.IsValid) return Page();
-        _postService.CreatePost(Text, _userService.GetUserId(User.Identity.Name));
+        _postService.CreatePost(Text, User.Identity!.Name);
         return RedirectToPage(nameof(Feed));
     }
 }

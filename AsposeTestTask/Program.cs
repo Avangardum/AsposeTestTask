@@ -16,7 +16,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<PostService>();
-builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 

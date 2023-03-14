@@ -15,9 +15,9 @@ public class PostService
 
     public List<string> GetAllPostIds() => _dbContext.Posts.Select(p => p.Id).ToList();
     
-    public void CreatePost(string text, string authorId)
+    public void CreatePost(string text, string authorName)
     {
-        var post = new Post { Id = Guid.NewGuid().ToString(), Text = text, AuthorId = authorId };
+        var post = new Post { Id = Guid.NewGuid().ToString(), Text = text, AuthorName = authorName };
         _dbContext.Posts.Add(post);
         _dbContext.SaveChanges();
     }
