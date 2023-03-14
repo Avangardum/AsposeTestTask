@@ -1,14 +1,14 @@
 ﻿@page
-@model Avangardum.AsposeTestTask.Pages.CreatePost
+@model Avangardum.AsposeTestTask.Pages.EditPost
 @{
-    ViewData["Title"] = "Create Post";
+    ViewData["Title"] = "Edit Post";
 }
 
-<h1>Create Post</h1><br/>
-<form asp-page="@nameof(CreatePost)">
+<h1>Edit Post</h1><br/>
+<form asp-page="@nameof(EditPost)" asp-route-id="@Model.Id">
     <label asp-for="Input.Title">Title</label>
     <input class="form-control" asp-for="Input.Title"><br/>
     <label asp-for="Input.Text">Text</label>
     <textarea class="form-control" asp-for="Input.Text" rows="15"></textarea><br/>
-    <button type="submit" class="btn btn-primary">Create Post</button>
+    <button type="submit" class="btn btn-primary">Edit Post</button>
 </form>

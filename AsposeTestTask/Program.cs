@@ -1,7 +1,9 @@
+using Avangardum.AsposeTestTask.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Avangardum.AsposeTestTask.Data;
 using Avangardum.AsposeTestTask.Models;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,16 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanManagePost", policyBuilder =>
+    {
+        policyBuilder.Requirements.Add(new IsPostAuthorRequirement());
+    });
+});
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IAuthorizationHandler, IsPostAuthorHandler>();
 builder.Services.AddScoped<PostService>();
 
 var app = builder.Build();
