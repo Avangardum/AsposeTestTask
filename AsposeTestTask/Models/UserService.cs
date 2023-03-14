@@ -11,5 +11,9 @@ public class UserService
         _dbContext = dbContext;
     }
 
-    public string GetUserName(string id) => _dbContext.Users.SingleOrDefault(u => u.Id == id)?.UserName;
+    public string GetUserName(string id) => 
+        _dbContext.Users.SingleOrDefault(u => u.Id == id)?.UserName;
+    
+    public string GetUserId(string userName) => 
+        _dbContext.Users.SingleOrDefault(u => u.UserName == userName)?.Id;
 }

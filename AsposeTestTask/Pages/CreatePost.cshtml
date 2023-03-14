@@ -1,0 +1,12 @@
+﻿@page
+@model Avangardum.AsposeTestTask.Pages.CreatePost
+
+@{
+    ViewData["Title"] = "Create Post";
+}
+
+<h1>Create Post</h1><br/>
+<form asp-page="@nameof(CreatePost)">
+    <textarea class="form-control" asp-for="Text" rows="15"></textarea><br/>
+    <button type="submit" class="btn btn-primary">Create Post</button>
+</form>
