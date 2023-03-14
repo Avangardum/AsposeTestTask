@@ -10,5 +10,11 @@
         <b>@postViewModel.AuthorName</b><br/>
         <h4>@postViewModel.Title</h4>
         @postViewModel.Text
+        @if (postViewModel.CanEdit)
+        {
+            <br/>
+            <a class="btn btn-primary" style="margin-top: 10px" asp-page="@nameof(EditPost)" 
+               asp-route-id="@postViewModel.Id">Edit</a>
+        }
     </div>
 }

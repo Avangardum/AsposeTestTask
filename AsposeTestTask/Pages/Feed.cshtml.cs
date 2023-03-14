@@ -6,7 +6,7 @@ namespace Avangardum.AsposeTestTask.Pages;
 
 public class Feed : PageModel
 {
-    public record PostViewModel(string Title, string Text, string AuthorName);
+    public record PostViewModel(string Id, string Title, string Text, string AuthorName, bool CanEdit);
 
     private readonly PostService _postService;
 
@@ -28,5 +28,9 @@ public class Feed : PageModel
         PostsViewModels = posts.Select(ConvertPostToViewModel).ToList();
     }
 
-    private PostViewModel ConvertPostToViewModel(Post post) => new(post.Title, post.Text, post.AuthorName);
+    private PostViewModel ConvertPostToViewModel(Post post)
+    {
+        var canEdit = post.AuthorName == User.Identity?.Name;
+        return new PostViewModel(post.Id, post.Title, post.Text, post.AuthorName, canEdit);
+    }
 }
