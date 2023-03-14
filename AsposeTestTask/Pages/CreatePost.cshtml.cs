@@ -9,6 +9,8 @@ namespace Avangardum.AsposeTestTask.Pages;
 [Authorize]
 public class CreatePost : PageModel
 {
+    public record InputModel([Required] string Title, [Required] string Text);
+    
     private PostService _postService;
 
     public CreatePost(PostService postService)
@@ -16,8 +18,8 @@ public class CreatePost : PageModel
         _postService = postService;
     }
 
-    [BindProperty, Required]
-    public string Text { get; set; }
+    [BindProperty] 
+    public InputModel Input { get; set; }
     
     public void OnGet()
     {
@@ -27,7 +29,7 @@ public class CreatePost : PageModel
     public IActionResult OnPost()
     {
         if (!ModelState.IsValid) return Page();
-        _postService.CreatePost(Text, User.Identity!.Name);
+        _postService.CreatePost(Input.Title, Input.Text, User.Identity!.Name);
         return RedirectToPage(nameof(Feed));
     }
 }
