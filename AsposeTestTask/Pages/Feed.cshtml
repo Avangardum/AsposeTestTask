@@ -4,11 +4,11 @@
     ViewData["Title"] = "Feed";
 }
 
-@foreach (var post in Model.Posts)
+@foreach (var postViewModel in Model.PostsViewModels)
 {
     <div class="post">
-        <b>@post.AuthorName</b><br/>
-        <h4>@post.Title</h4>
-        @post.Text
+        <b>@postViewModel.AuthorName</b><br/>
+        <h4>@postViewModel.Title</h4>
+        @postViewModel.Text
     </div>
 }

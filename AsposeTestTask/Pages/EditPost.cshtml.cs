@@ -28,7 +28,7 @@ public class EditPost : PageModel
     
     public async Task<IActionResult> OnGet()
     {
-        var post = _postService.GetPost(Id);
+        var post = await _postService.GetPost(Id);
         if (post == null) return NotFound();
         var authResult = await _authService.AuthorizeAsync(User, post, "CanManagePost");
         if (!authResult.Succeeded) return Forbid();
@@ -39,8 +39,8 @@ public class EditPost : PageModel
 
     public async Task<IActionResult> OnPost()
     {
-        var post = _postService.GetPost(Id);
-        if (post == null) return NotFound();
+        var post = await _postService.GetPost(Id);
+        if (post is null) return NotFound();
         var authResult = await _authService.AuthorizeAsync(User, post, "CanManagePost");
         if (!authResult.Succeeded) return Forbid();
         if (!ModelState.IsValid) return Page();

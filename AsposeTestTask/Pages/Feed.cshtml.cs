@@ -15,15 +15,17 @@ public class Feed : PageModel
         _postService = postService;
     }
 
-    public List<PostViewModel> Posts { get; set; } = new();
+    public List<PostViewModel> PostsViewModels { get; set; } = new();
 
-    public void OnGet()
+    public async Task OnGet()
     {
-        Posts = _postService.GetAllPostIds()
-            .Select(_postService.GetPost)
-            .OrderByDescending(p => p.PublicationTime)
-            .Select(ConvertPostToViewModel)
-            .ToList();
+        var ids = await _postService.GetAllPostIds();
+        var getPostTasks = ids.Select(_postService.GetPost).ToList();
+        await Task.WhenAll(getPostTasks);
+        var posts = getPostTasks
+            .Select(t => t.Result)
+            .OrderByDescending(p => p.PublicationTime);
+        PostsViewModels = posts.Select(ConvertPostToViewModel).ToList();
     }
 
     private PostViewModel ConvertPostToViewModel(Post post) => new(post.Title, post.Text, post.AuthorName);
