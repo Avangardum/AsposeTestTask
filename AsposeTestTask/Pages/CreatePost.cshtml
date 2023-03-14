@@ -7,7 +7,9 @@
 
 <h1>Create Post</h1><br/>
 <form asp-page="@nameof(CreatePost)">
+    <label asp-for="Input.Title">Title</label>
     <input class="form-control" asp-for="Input.Title"><br/>
+    <label asp-for="Input.Text">Text</label>
     <textarea class="form-control" asp-for="Input.Text" rows="15"></textarea><br/>
     <button type="submit" class="btn btn-primary">Create Post</button>
 </form>
