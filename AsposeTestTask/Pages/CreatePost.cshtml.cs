@@ -26,10 +26,10 @@ public class CreatePost : PageModel
         
     }
 
-    public IActionResult OnPost()
+    public async Task<IActionResult> OnPost()
     {
         if (!ModelState.IsValid) return Page();
-        _postService.CreatePost(Input.Title, Input.Text, User.Identity!.Name);
+        await _postService.CreatePost(Input.Title, Input.Text, User.Identity!.Name);
         return RedirectToPage(nameof(Feed));
     }
 }
