@@ -19,9 +19,9 @@ public class Feed : PageModel
 
     public void OnGet()
     {
-        Posts = ((IEnumerable<string>)_postService.GetAllPostIds())
-            .Reverse()
+        Posts = _postService.GetAllPostIds()
             .Select(_postService.GetPost)
+            .OrderByDescending(p => p.PublicationTime)
             .Select(ConvertPostToViewModel)
             .ToList();
     }

@@ -17,7 +17,7 @@ public class PostService
     
     public void CreatePost(string text, string authorName)
     {
-        var post = new Post { Id = Guid.NewGuid().ToString(), Text = text, AuthorName = authorName };
+        var post = new Post { Id = Guid.NewGuid().ToString(), Text = text, AuthorName = authorName, PublicationTime = DateTime.UtcNow};
         _dbContext.Posts.Add(post);
         _dbContext.SaveChanges();
     }
