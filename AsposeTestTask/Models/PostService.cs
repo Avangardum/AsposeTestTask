@@ -11,7 +11,7 @@ public class PostService
         _dbContext = dbContext;
     }
 
-    public Post GetPost(string id) => _dbContext.Posts.SingleOrDefault(p => p.Id == id);
+    public Post GetPost(string id) => _dbContext.Posts.Find(id);
 
     public List<string> GetAllPostIds() => _dbContext.Posts.Select(p => p.Id).ToList();
     
