@@ -11,8 +11,8 @@ public class EditPost : PageModel
 {
     public record InputModel([Required] string Title, [Required] string Text);
 
-    private PostService _postService;
-    private IAuthorizationService _authService;
+    private readonly PostService _postService;
+    private readonly IAuthorizationService _authService;
 
     public EditPost(PostService postService, IAuthorizationService authService)
     {
