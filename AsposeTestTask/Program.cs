@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Avangardum.AsposeTestTask.Data;
 using Avangardum.AsposeTestTask.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -71,6 +72,11 @@ void ConfigureServices()
 
 void ConfigureMiddlewarePipeline()
 {
+    app.UseForwardedHeaders(new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+    });
+    
     if (app.Environment.IsDevelopment())
     {
         app.UseMigrationsEndPoint();
