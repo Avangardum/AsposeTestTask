@@ -9,12 +9,10 @@
     <div class="post">
         <b>@postViewModel.AuthorName</b><br/>
         <h4>@postViewModel.Title</h4>
-        @postViewModel.Text
+        <p style="white-space: pre-wrap">@postViewModel.Text</p>
         @if (postViewModel.CanEdit)
         {
-            <br/>
-            <a class="btn btn-primary" style="margin-top: 10px" asp-page="@nameof(EditPost)" 
-               asp-route-id="@postViewModel.Id">Edit</a>
+            <a class="btn btn-primary" asp-page="@nameof(EditPost)" asp-route-id="@postViewModel.Id">Edit</a>
         }
     </div>
 }
