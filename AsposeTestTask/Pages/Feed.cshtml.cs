@@ -22,12 +22,7 @@ public class Feed : PageModel
 
     public async Task OnGet()
     {
-        var ids = await _postService.GetAllPostIds();
-        var getPostTasks = ids.Select(_postService.GetPost).ToList();
-        await Task.WhenAll(getPostTasks);
-        var posts = getPostTasks
-            .Select(t => t.Result)
-            .OrderByDescending(p => p.PublicationTime);
+        var posts = await _postService.GetAllPosts();
         var getPostViewModelTasks = posts.Select(ConvertPostToViewModel).ToList();
         await Task.WhenAll(getPostViewModelTasks);
         PostViewModels = getPostViewModelTasks.Select(t => t.Result).ToList();

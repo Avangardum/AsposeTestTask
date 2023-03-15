@@ -15,8 +15,8 @@ public class PostService
 
     public async Task<Post> GetPost(string id) => await _dbContext.Posts.FindAsync(id);
 
-    public async Task<List<string>> GetAllPostIds() => await _dbContext.Posts.Select(p => p.Id).ToListAsync();
-    
+    public async Task<List<Post>> GetAllPosts() => await _dbContext.Posts.ToListAsync();
+
     public async Task CreatePost(string title, string text, string authorName)
     {
         var post = new Post { Id = Guid.NewGuid().ToString(), Title = title, Text = text, AuthorName = authorName, 
