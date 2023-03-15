@@ -48,6 +48,7 @@ else
     app.UseHsts();
 }
 
+app.UseStatusCodePagesWithRedirects("/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
